@@ -8,7 +8,7 @@ namespace OneMovie.Service.Models
     public partial class MuaVip
     {
         public string TaiKhoan { get; set; }
-        public int? Idgoi { get; set; }
+        public int Idgoi { get; set; }
         public DateTime? NgayMua { get; set; }
 
         public virtual GoiVip IdgoiNavigation { get; set; }

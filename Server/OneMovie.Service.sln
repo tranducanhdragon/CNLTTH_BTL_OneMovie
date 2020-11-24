@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneMovie.Service", "OneMovie.Service\OneMovie.Service.csproj", "{D52013A2-FE53-40FE-8A71-79C6FE18806C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneMovie.Service", "OneMovie.Service\OneMovie.Service.csproj", "{D52013A2-FE53-40FE-8A71-79C6FE18806C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
