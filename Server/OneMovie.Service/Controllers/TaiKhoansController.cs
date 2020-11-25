@@ -80,6 +80,7 @@ namespace OneMovie.Service.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<TaiKhoan>> PostTaiKhoan(TaiKhoan taiKhoan)
+
         {
             _context.TaiKhoans.Add(taiKhoan);
             try

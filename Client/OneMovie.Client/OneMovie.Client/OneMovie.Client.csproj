@@ -236,8 +236,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Phanphim.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -359,12 +361,14 @@
     <Content Include="assets\css-js\list-js\jquery.mobile.custom.min.js" />
     <Content Include="assets\css-js\list-js\jquery.tools.min.js" />
     <Content Include="assets\css-js\news-css\news.css" />
+    <Content Include="Content\css\autocomplete.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\button-login-register.css" />
     <Content Include="Content\css\contactstyle.css" />
     <Content Include="Content\css\faqstyle.css" />
     <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\css\jquery.slidey.min.css" />
     <Content Include="Content\css\medile.css" />
     <Content Include="Content\css\news.css" />
@@ -513,6 +517,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\_ViewPartiallogin.cshtml" />
     <Content Include="Views\Login\_ViewPartialRegister.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

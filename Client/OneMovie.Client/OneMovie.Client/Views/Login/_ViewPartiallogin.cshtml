@@ -7,7 +7,6 @@
     <input type="button" id="submitbutton" value="Đăng nhập">
 </form>
 <script>
-    var frm = $('ajaxlogin');
     $('#submitbutton').click(function (e) {
         var datasend = { Username: document.formlogin.Username.value, Password: document.formlogin.Password.value };
         $.ajax({
@@ -15,7 +14,7 @@
             type: "POST",
             data: datasend,
             success: function (result) {
-                if (result == "true") {
+                if (result == 'true') {
                     window.location.href = '/home/index';
                 }
                 else {
