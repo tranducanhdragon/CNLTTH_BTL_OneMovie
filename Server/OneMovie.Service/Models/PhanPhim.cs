@@ -9,7 +9,7 @@ namespace OneMovie.Service.Models
     {
         public PhanPhim()
         {
-            DanhGiaNavigation = new HashSet<DanhGium>();
+            DanhGiaNavigation = new HashSet<DanhGia>();
             LichSuXems = new HashSet<LichSuXem>();
             LuuPhims = new HashSet<LuuPhim>();
         }
@@ -26,7 +26,7 @@ namespace OneMovie.Service.Models
         public int? MaBp { get; set; }
 
         public virtual BoPhim MaBpNavigation { get; set; }
-        public virtual ICollection<DanhGium> DanhGiaNavigation { get; set; }
+        public virtual ICollection<DanhGia> DanhGiaNavigation { get; set; }
         public virtual ICollection<LichSuXem> LichSuXems { get; set; }
         public virtual ICollection<LuuPhim> LuuPhims { get; set; }
     }

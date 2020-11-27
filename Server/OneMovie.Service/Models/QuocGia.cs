@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace OneMovie.Service.Models
 {
-    public partial class QuocGium
+    public partial class QuocGia
     {
         public int MaQg { get; set; }
         public string TenQg { get; set; }

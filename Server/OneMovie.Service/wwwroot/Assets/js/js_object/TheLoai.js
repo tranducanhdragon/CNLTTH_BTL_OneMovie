@@ -14,7 +14,7 @@ class TheLoaiJS {
         }).done(function (response) {
             $('#ulTL').empty();
             $.each(response, function (index, item) {
-                var liHTML = $(`<li><a href="genres.html">` + item.TenTl + `</a></li>`);
+            var liHTML = $(`<li><a href="genres.html">` + item.TenTl + `</a></li>`);
                 $('#ulTL').append(liHTML);
             })
         }).fail(function (response) {

@@ -19,7 +19,7 @@ namespace OneMovie.Service.Models
 
         public virtual DbSet<BinhLuan> BinhLuans { get; set; }
         public virtual DbSet<BoPhim> BoPhims { get; set; }
-        public virtual DbSet<DanhGium> DanhGia { get; set; }
+        public virtual DbSet<DanhGia> DanhGia { get; set; }
         public virtual DbSet<DaoDien> DaoDiens { get; set; }
         public virtual DbSet<DienVien> DienViens { get; set; }
         public virtual DbSet<DienVienPhanPhim> DienVienPhanPhims { get; set; }
@@ -32,7 +32,7 @@ namespace OneMovie.Service.Models
         public virtual DbSet<PhanHoi> PhanHois { get; set; }
         public virtual DbSet<PhanPhim> PhanPhims { get; set; }
         public virtual DbSet<QuocGiaBoPhim> QuocGiaBoPhims { get; set; }
-        public virtual DbSet<QuocGium> QuocGia { get; set; }
+        public virtual DbSet<QuocGia> QuocGia { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<TheLoaiBoPhim> TheLoaiBoPhims { get; set; }
@@ -87,7 +87,7 @@ namespace OneMovie.Service.Models
                     .HasConstraintName("FK_BoPhim_DaoDien");
             });
 
-            modelBuilder.Entity<DanhGium>(entity =>
+            modelBuilder.Entity<DanhGia>(entity =>
             {
                 entity.HasKey(e => e.TaiKhoan);
 
@@ -104,7 +104,7 @@ namespace OneMovie.Service.Models
 
                 entity.HasOne(d => d.TaiKhoanNavigation)
                     .WithOne(p => p.DanhGium)
-                    .HasForeignKey<DanhGium>(d => d.TaiKhoan)
+                    .HasForeignKey<DanhGia>(d => d.TaiKhoan)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_DanhGia_TaiKhoan");
             });
@@ -363,7 +363,7 @@ namespace OneMovie.Service.Models
                     .HasConstraintName("FK_QuocGia_BoPhim_QuocGia");
             });
 
-            modelBuilder.Entity<QuocGium>(entity =>
+            modelBuilder.Entity<QuocGia>(entity =>
             {
                 entity.HasKey(e => e.MaQg);
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace OneMovie.Service.Models
 {
-    public partial class DanhGium
+    public partial class DanhGia
     {
         public string TaiKhoan { get; set; }
         public string MaPhim { get; set; }

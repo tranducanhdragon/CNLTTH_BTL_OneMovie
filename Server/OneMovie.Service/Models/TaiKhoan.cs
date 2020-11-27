@@ -16,7 +16,7 @@ namespace OneMovie.Service.Models
         public string Sdt { get; set; }
 
         public virtual BinhLuan BinhLuan { get; set; }
-        public virtual DanhGium DanhGium { get; set; }
+        public virtual DanhGia DanhGium { get; set; }
         public virtual LichSuXem LichSuXem { get; set; }
         public virtual LuuPhim LuuPhim { get; set; }
         public virtual MuaVip MuaVip { get; set; }

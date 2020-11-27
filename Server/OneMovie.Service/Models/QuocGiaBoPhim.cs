@@ -11,6 +11,6 @@ namespace OneMovie.Service.Models
         public int MaBp { get; set; }
 
         public virtual BoPhim MaBpNavigation { get; set; }
-        public virtual QuocGium MaQgNavigation { get; set; }
+        public virtual QuocGia MaQgNavigation { get; set; }
     }
 }
