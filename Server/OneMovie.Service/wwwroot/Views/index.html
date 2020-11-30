@@ -84,8 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="w3l_sign_in_register">
 				<ul>
-					<li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 123 345 653</li>
-					<li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+					<li class="userShow"><a href="#" data-toggle="modal" data-target="#myModal">Đăng nhập</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -97,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					Sign In & Sign Up
+					Đăng nhập & Đăng ký
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				</div>
 				<section>
@@ -108,25 +107,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<i class="fa fa-times fa-pencil"></i>
 									<div class="tooltip">Click Me</div>
 								</div>
-								<div class="form">
-									<h3>Login to your account</h3>
-									<form action="#" method="post">
-										<input type="text" name="Username" placeholder="Username" required="">
-										<input type="password" name="Password" placeholder="Password" required="">
-										<input type="submit" value="Login">
-									</form>
+								<div class="form SignIn">
+									<h3>Đăng nhập với tài khoản của bạn</h3>
+									<input type="text" fieldname="TaiKhoan1" placeholder="Tên đăng nhập" required="">
+									<input type="password" fieldname="MatKhau" placeholder="Mật khẩu" required="">
+									<input id="btnDangNhap" type="submit" value="Đăng nhập">
 								</div>
-								<div class="form">
-									<h3>Create an account</h3>
-									<form action="#" method="post">
-										<input type="text" name="Username" placeholder="Username" required="">
-										<input type="password" name="Password" placeholder="Password" required="">
-										<input type="email" name="Email" placeholder="Email Address" required="">
-										<input type="text" name="Phone" placeholder="Phone Number" required="">
-										<input type="submit" value="Register">
-									</form>
+								<div class="form SignUp">
+									<h3>Tạo tài khoản mới</h3>
+									<input type="text" fieldname="TaiKhoan1" placeholder="Tên đăng nhập" required="">
+									<input type="password" fieldname="MatKhau" placeholder="Mật khẩu" required="">
+									<input type="email" fieldname="Email" placeholder="Địa chỉ Email" required="">
+									<input type="text" fieldname="Sdt" placeholder="Số điện thoại" required="">
+									<input id="btnDangKy" type="submit" value="Đăng ký">
 								</div>
-								<div class="cta"><a href="#">Forgot your password?</a></div>
+								<div class="cta"><a href="#">Quên mật khẩu?</a></div>
 							</div>
 						</div>
 					</div>
@@ -1804,33 +1799,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!-- pop-up-box -->
 	<script src="/Assets/js/jquery.magnific-popup.js" type="text/javascript"></script>
-	<!--//pop-up-box -->
-	<div id="small-dialog" class="mfp-hide">
-		<iframe src="https://player.vimeo.com/video/164819130?title=0&byline=0"></iframe>
-	</div>
-	<div id="small-dialog1" class="mfp-hide">
-		<iframe src="https://player.vimeo.com/video/148284736"></iframe>
-	</div>
-	<div id="small-dialog2" class="mfp-hide">
-		<iframe src="https://player.vimeo.com/video/165197924?color=ffffff&title=0&byline=0&portrait=0"></iframe>
-	</div>
-	<script>
-		$(document).ready(function () {
-			$('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
-				type: 'inline',
-				fixedContentPos: false,
-				fixedBgPos: true,
-				overflowY: 'auto',
-				closeBtnInside: true,
-				preloader: false,
-				midClick: true,
-				removalDelay: 300,
-				mainClass: 'my-mfp-zoom-in'
-			});
 
-		});
-	</script>
-	<!-- //Latest-tv-series -->
 	<!-- footer -->
 	<div class="footer">
 		<div class="container">
@@ -1920,6 +1889,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--Custom Script-->
 	<script src="/Assets/js/js_object/TheLoai.js"></script>
 	<script src="../Assets/js/js_object/QuocGia.js"></script>
+	<script src="../Javascript/BaseAPI.js"></script>
+	<script src="../Javascript/Account.js"></script>
 
 </body>
 </html>

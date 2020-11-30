@@ -29,18 +29,22 @@ namespace OneMovie.Service.Controllers
 
         // GET: api/TaiKhoans/5
         [HttpGet]
-        [Route("{id}/{password}")]
-        public TaiKhoan GetTaiKhoan(string id,string password)
+        [Route("{taikhoan}/{matkhau}")]
+        public ServiceRespone GetTaiKhoan(string taikhoan,string matkhau)
         {
-            var taiKhoan =  _context.TaiKhoans.Where(s => s.TaiKhoan1 == id && s.MatKhau == password).FirstOrDefault();
+            ServiceRespone res = new ServiceRespone();
 
-            if (taiKhoan == null)
+            var taiKhoanDB =  _context.TaiKhoans.Where(s => s.TaiKhoan1 == taikhoan && s.MatKhau == matkhau).FirstOrDefault();
+
+            if (taiKhoanDB == null)
             {
-                return null;
+                res.Message = "Sai tên đăng nhập hoặc mật khẩu";
+                res.Success = false;
+                return res;
             }
-            else
-
-            return taiKhoan;
+            res.Success = true;
+            res.Data = taiKhoanDB;
+            return res;
         }
 
         // PUT: api/TaiKhoans/5
@@ -79,27 +83,31 @@ namespace OneMovie.Service.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<TaiKhoan>> PostTaiKhoan(TaiKhoan taiKhoan)
+        public async Task<ServiceRespone> PostTaiKhoan(TaiKhoan taiKhoan)
 
         {
-            _context.TaiKhoans.Add(taiKhoan);
-            try
+            ServiceRespone res = new ServiceRespone();
+            if (taiKhoan.TaiKhoan1.Trim() == "" || taiKhoan.MatKhau.Trim() == "")
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (TaiKhoanExists(taiKhoan.TaiKhoan1))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                res.Message = "Vui lòng nhập các trường bắt buộc";
+                res.Success = false;
+                return res;
             }
 
-            return CreatedAtAction("GetTaiKhoan", new { id = taiKhoan.TaiKhoan1 }, taiKhoan);
+            var taikhoanDB = _context.TaiKhoans.FirstOrDefault(x => x.TaiKhoan1 == taiKhoan.TaiKhoan1);
+            if(taikhoanDB != null)
+            {
+                res.Message = "Tên đăng nhập này đã được sử dụng";
+                res.Success = false;
+                res.ErrorCode = 1;
+                return res;
+            }
+
+            taiKhoan.LoaiTk = 0;
+            _context.TaiKhoans.Add(taiKhoan);
+            await _context.SaveChangesAsync();
+            res.Success = true;
+            return res;
         }
 
         // DELETE: api/TaiKhoans/5
