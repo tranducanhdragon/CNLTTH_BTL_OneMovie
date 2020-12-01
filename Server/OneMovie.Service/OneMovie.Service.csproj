@@ -139,5 +139,9 @@
     <None Include="wwwroot\Assets\news-css\news.css" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Assets\MyImages\" />
+  </ItemGroup>
+
 
 </Project>

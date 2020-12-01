@@ -24,7 +24,8 @@ class AccountJS {
         let promise = BaseAPI.Post('/api/TaiKhoans', obj);
         promise.then((res) => {
             if (res.Success) {
-                $("#myModal , .modal-backdrop.fade.in").hide();
+                alert('Đăng ký thành công');
+                //$("#myModal , .modal-backdrop.fade.in").hide();
             } else {
                 alert(res.Message)
             }
