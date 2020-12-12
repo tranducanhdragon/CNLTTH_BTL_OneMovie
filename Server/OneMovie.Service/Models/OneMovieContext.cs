@@ -335,6 +335,10 @@ namespace OneMovie.Service.Models
 
                 entity.Property(e => e.ThoiLuong).HasMaxLength(100);
 
+                entity.Property(e => e.NgayTao)
+                    .HasColumnType("date")
+                    .HasColumnName("NgayTao");
+
                 entity.HasOne(d => d.MaBpNavigation)
                     .WithMany(p => p.PhanPhims)
                     .HasForeignKey(d => d.MaBp)

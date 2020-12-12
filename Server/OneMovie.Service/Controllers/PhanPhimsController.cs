@@ -27,6 +27,18 @@ namespace OneMovie.Service.Controllers
             return await _context.PhanPhims.ToListAsync();
         }
 
+        [HttpGet("GetByPaging")]
+        public async Task<PagingData> GetDataByPagin([FromQuery] int page, [FromQuery] int record)
+        {
+            var pagingData = new PagingData();
+
+            var allPhims = await _context.PhanPhims.OrderByDescending(_ => _.NgayTao).ToListAsync();
+            pagingData.TotalRecord = allPhims.Count();
+            pagingData.TotalPage = Convert.ToInt32(Math.Ceiling((decimal)pagingData.TotalRecord / (decimal)record));
+            pagingData.Data = allPhims.Skip((page - 1) * record).Take(record).ToList();
+            return pagingData;
+        }
+
         // GET: api/PhanPhims/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PhanPhim>> GetPhanPhim(string id)

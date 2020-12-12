@@ -396,6 +396,7 @@ ol.breadcrumb li a {
             text-decoration: none;
             border: 1px solid #ddd;
             font-family: 'Roboto Condensed', sans-serif;
+            cursor: pointer;
         }
 
             .blog-pagenat-wthree ul li a.frist, .blog-pagenat-wthree ul li a.last {

@@ -1517,3 +1517,7 @@ h3.head {
 		font-size: 1.8em;
 	}
 }
+.blog-pagenat-wthree ul#paging li a.active-page {
+	background: #c1c1c1;
+	border: 1px solid #c1c1c1;
+}

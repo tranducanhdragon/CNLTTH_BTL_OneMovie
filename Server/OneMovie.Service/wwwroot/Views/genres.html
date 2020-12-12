@@ -75,14 +75,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="w3_search">
                 <form action="#" method="post">
-                    <input type="text" name="Search" placeholder="Search" required="">
-                    <input type="submit" value="Go">
+                    <input type="text" name="Search" placeholder="Tên phim, diễn viên, tác giả,..." required="">
+                    <input type="submit" value="Tìm">
                 </form>
             </div>
             <div class="w3l_sign_in_register">
                 <ul>
-                    <li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 123 345 653</li>
-                    <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+                    <li class="userShow"><a href="#" data-toggle="modal" data-target="#myModal">Đăng nhập</a></li>
                 </ul>
             </div>
             <div class="clearfix"> </div>
@@ -94,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    Sign In & Sign Up
+                    Đăng nhập & Đăng ký
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <section>
@@ -105,25 +104,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <i class="fa fa-times fa-pencil"></i>
                                     <div class="tooltip">Click Me</div>
                                 </div>
-                                <div class="form">
-                                    <h3>Login to your account</h3>
-                                    <form action="#" method="post">
-                                        <input type="text" name="Username" placeholder="Username" required="">
-                                        <input type="password" name="Password" placeholder="Password" required="">
-                                        <input type="submit" value="Login">
-                                    </form>
+                                <div class="form SignIn">
+                                    <div id="alert-err" class="alert alert-danger" role="alert" style="display:none">
+                                    </div>
+                                    <h3>Đăng nhập với tài khoản của bạn</h3>
+                                    <input id="userName" type="text" fieldname="TaiKhoan1" placeholder="Tên đăng nhập" required="">
+                                    <input id="passWord" type="password" fieldname="MatKhau" placeholder="Mật khẩu" required="">
+                                    <input id="btnDangNhap" type="submit" aria-label="Close" value="Đăng nhập">
                                 </div>
-                                <div class="form">
-                                    <h3>Create an account</h3>
-                                    <form action="#" method="post">
-                                        <input type="text" name="Username" placeholder="Username" required="">
-                                        <input type="password" name="Password" placeholder="Password" required="">
-                                        <input type="email" name="Email" placeholder="Email Address" required="">
-                                        <input type="text" name="Phone" placeholder="Phone Number" required="">
-                                        <input type="submit" value="Register">
-                                    </form>
+                                <div class="form SignUp">
+                                    <div id="alert-res" class="alert alert-success" role="alert" style="display:none">
+
+                                    </div>
+                                    <h3>Tạo tài khoản mới</h3>
+                                    <input type="text" fieldname="TaiKhoan1" placeholder="Tên đăng nhập" required="">
+                                    <input type="password" fieldname="MatKhau" placeholder="Mật khẩu" required="">
+                                    <input type="email" fieldname="Email" placeholder="Địa chỉ Email" required="">
+                                    <input type="text" fieldname="Sdt" placeholder="Số điện thoại" required="">
+                                    <input id="btnDangKy" type="submit" aria-label="Close" value="Đăng ký">
                                 </div>
-                                <div class="cta"><a href="#">Forgot your password?</a></div>
+                                <div class="cta"><a href="#">Quên mật khẩu?</a></div>
                             </div>
                         </div>
                     </div>
@@ -131,6 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
+
     <script>
         $('.toggle').click(function () {
             // Switches the Icon
@@ -161,16 +162,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <nav>
                         <ul class="nav navbar-nav">
-                            <li class="w3_home_act"><a href="index.html">Home</a></li>
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <b class="caret"></b></a>
+                            <li class="active"><a href="index.html">Trang chủ</a></li>
+                            <li><a href="all-movie.html">Tất cả phim</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thể loại <b class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <li>
                                         <div class="col-sm-4">
                                             <ul id="ulTL" class="multi-column-dropdown">
-
                                                 <!--DS thể loại-->
-
                                             </ul>
                                         </div>
 
@@ -178,17 +178,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="series.html">tv - series</a></li>
-                            <li><a href="news.html">news</a></li>
+                            <li><a href="news.html">Mới nhất</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Country <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quốc gia <b class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <li>
                                         <div class="col-sm-4">
                                             <ul id="ulQG" class="multi-column-dropdown">
-
-                                                <!--DS thể loại-->
-
+                                                <!--DS Quốc gia-->
                                             </ul>
                                         </div>
 
@@ -196,8 +193,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="short-codes.html">Short Codes</a></li>
-                            <li><a href="list.html">A - z list</a></li>
                         </ul>
                     </nav>
                 </div>

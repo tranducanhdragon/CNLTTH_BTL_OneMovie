@@ -24,6 +24,7 @@ namespace OneMovie.Service.Models
         public string LinkAnh { get; set; }
         public int? PhimVip { get; set; }
         public int? MaBp { get; set; }
+        public DateTime? NgayTao { get; set; }
 
         public virtual BoPhim MaBpNavigation { get; set; }
         public virtual ICollection<DanhGia> DanhGiaNavigation { get; set; }
