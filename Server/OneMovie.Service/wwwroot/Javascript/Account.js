@@ -13,7 +13,9 @@ class AccountJS {
         $("#btnDangNhap").click(this.btnDangNhapOnClick.bind(this));
     }
 
-
+    /**
+     * Create by: BTTu (12/12/2020)
+     * */
     btnDangKyOnClick() {
         let obj = {};
         let fields = $(".form.SignUp input");
@@ -24,16 +26,34 @@ class AccountJS {
         let promise = BaseAPI.Post('/api/TaiKhoans', obj);
         promise.then((res) => {
             if (res.Success) {
-                alert('Đăng ký thành công');
-                //$("#myModal , .modal-backdrop.fade.in").hide();
+                $('#alert-res').html("Đăng ký thành công");
+                $('#alert-res').removeClass('alert-danger');
+                $('#alert-res').addClass('alert-success');
+                $('#alert-res').show();
+
+                //Tự đăng nhập sau 1.5 giây
+                setTimeout(() => {
+                    $('#myModal').modal('hide');
+                    $('#userName').val(obj.TaiKhoan1);
+                    $('#passWord').val(obj.MatKhau);
+                    this.btnDangNhapOnClick();
+                }, 1500);
+
             } else {
-                alert(res.Message)
+                $('#alert-res').html(res.Message);
+                $('#alert-res').removeClass('alert-success');
+                $('#alert-res').addClass('alert-danger');
+                $('#alert-res').show();
             }
         })
     }
 
+    /**
+     * Create by: BTTu (12/12/2020)
+     * */
     btnDangNhapOnClick() {
         let obj = {};
+        debugger;
         let fields = $(".form.SignIn input");
         $.each(fields, function (index, field) {
             var fieldName = $(field).attr('fieldname');
@@ -51,10 +71,10 @@ class AccountJS {
                     $(".userShow").empty();
                     let hmlt = $(`<a href="#">` + res.Data.TaiKhoan1 + `</a>`)
                     $(".userShow").append(hmlt);
-                    $("#myModal").removeClass('in');
-                    $('.modal-backdrop').remove();
+                    $('#myModal').modal('hide');
                 } else {
-                    alert(res.Message)
+                    $('#alert-err').html(res.Message);
+                    $('#alert-err').show();
                 }
             }).fail((err) => {
             })
