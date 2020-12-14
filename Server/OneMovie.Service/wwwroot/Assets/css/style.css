@@ -1521,3 +1521,11 @@ h3.head {
 	background: #c1c1c1;
 	border: 1px solid #c1c1c1;
 }
+
+body::-webkit-scrollbar {
+	width: 5px;
+	background: #dcb28982;
+}
+body::-webkit-scrollbar-thumb {
+	background: #FF8D1B;
+}

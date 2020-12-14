@@ -6,13 +6,14 @@ $(document).ready(function () {
 class AccountJS {
     constructor() {
         this.initEvents();
+        this.afterLogin();
     }
 
     initEvents() {
         $("#btnDangKy").click(this.btnDangKyOnClick.bind(this));
         $("#btnDangNhap").click(this.btnDangNhapOnClick.bind(this));
     }
-
+    
     /**
      * Create by: BTTu (12/12/2020)
      * */
@@ -68,9 +69,8 @@ class AccountJS {
                 async: false
             }).done((res) => {
                 if (res.Success) {
-                    $(".userShow").empty();
-                    let hmlt = $(`<a href="#">` + res.Data.TaiKhoan1 + `</a>`)
-                    $(".userShow").append(hmlt);
+                    localStorage.setItem('TaiKhoan', JSON.stringify(obj));
+                    this.afterLogin();
                     $('#myModal').modal('hide');
                 } else {
                     $('#alert-err').html(res.Message);
@@ -80,6 +80,20 @@ class AccountJS {
             })
         } catch{
             console.log("Có lỗi");
+        }
+        
+    }
+
+    afterLogin() {
+        let taiKhoan = JSON.parse(localStorage.getItem('TaiKhoan'));
+        if (taiKhoan) {
+            $(".userShow").hide();
+            let html = $(`<h3>Xin chào <a href = "#" class="alert-link">` + taiKhoan.TaiKhoan1 + `</a>.</h3>`);
+            $('#userName').append(html);
+            $('#userName').show();
+        } else {
+            $(".userShow").show();
+            $('#userName').hide();
         }
         
     }
