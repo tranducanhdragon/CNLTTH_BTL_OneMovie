@@ -12,6 +12,7 @@ class AccountJS {
     initEvents() {
         $("#btnDangKy").click(this.btnDangKyOnClick.bind(this));
         $("#btnDangNhap").click(this.btnDangNhapOnClick.bind(this));
+        $(".w3l_sign_in_register").on('click','#logout',this.btnLogoutOnClick.bind(this));
     }
     
     /**
@@ -69,7 +70,7 @@ class AccountJS {
                 async: false
             }).done((res) => {
                 if (res.Success) {
-                    localStorage.setItem('TaiKhoan', JSON.stringify(obj));
+                    localStorage.setItem('TaiKhoan', JSON.stringify(res.Data));
                     this.afterLogin();
                     $('#myModal').modal('hide');
                 } else {
@@ -88,13 +89,24 @@ class AccountJS {
         let taiKhoan = JSON.parse(localStorage.getItem('TaiKhoan'));
         if (taiKhoan) {
             $(".userShow").hide();
-            let html = $(`<h3>Xin chào <a href = "#" class="alert-link">` + taiKhoan.TaiKhoan1 + `</a>.</h3>`);
+            let html = $(`<h3>Xin chào <a href = "#" class="alert-link">` + taiKhoan.TaiKhoan1 + `</a></h3> <h4 id="logout"><a href = "#" class="alert-link">Đăng xuất</a></h4>`);
             $('#userName').append(html);
+            if (taiKhoan.LoaiTk == 0) {
+                $('.buyVip').show();
+            } else {
+                $('.buyVip').hide();
+            }
             $('#userName').show();
         } else {
             $(".userShow").show();
             $('#userName').hide();
+            $('.buyVip').hide();
         }
         
+    }
+    btnLogoutOnClick() {
+        localStorage.removeItem('TaiKhoan');
+        console.log(localStorage);
+        this.afterLogin();
     }
 }
