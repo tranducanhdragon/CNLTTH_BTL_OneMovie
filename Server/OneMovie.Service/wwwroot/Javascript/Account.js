@@ -61,28 +61,41 @@ class AccountJS {
             var fieldName = $(field).attr('fieldname');
             obj[fieldName] = $(field).val();
         })
-        try {
-            $.ajax({
-                url: '/api/TaiKhoans/' + obj.TaiKhoan1 + '/' + obj.MatKhau,
-                method: "GET",
-                contentType: "application/json",
-                dataType: "json",
-                async: false
-            }).done((res) => {
-                if (res.Success) {
-                    localStorage.setItem('TaiKhoan', JSON.stringify(res.Data));
-                    this.afterLogin();
-                    $('#myModal').modal('hide');
-                } else {
-                    $('#alert-err').html(res.Message);
-                    $('#alert-err').show();
-                }
-            }).fail((err) => {
-            })
-        } catch{
-            console.log("Có lỗi");
-        }
-        
+        //try {
+        //    $.ajax({
+        //        url: '/api/TaiKhoans/' + obj.TaiKhoan1 + '/' + obj.MatKhau,
+        //        method: "GET",
+        //        contentType: "application/json",
+        //        dataType: "json",
+        //        async: false
+        //    }).done((res) => {
+        //        if (res.Success) {
+        //            localStorage.setItem('TaiKhoan', JSON.stringify(res.Data));
+        //            this.afterLogin();
+        //            $('#myModal').modal('hide');
+        //        } else {
+        //            $('#alert-err').html(res.Message);
+        //            $('#alert-err').show();
+        //        }
+        //    }).fail((err) => {
+        //    })
+        //} catch{
+        //    console.log("Có lỗi");
+        //}
+
+        //Dùng Promise
+        let promise = BaseAPI.GetByID('/api/TaiKhoans/' + obj.TaiKhoan1, obj.MatKhau);
+        promise.then((res) => {
+            if (res.Success) {
+                localStorage.setItem('TaiKhoan', JSON.stringify(res.Data));
+                this.afterLogin();
+                $('#myModal').modal('hide');
+            }
+            else {
+                $('#alert-err').html(res.Message);
+                $('#alert-err').show();
+            }
+        })
     }
 
     afterLogin() {
@@ -90,6 +103,7 @@ class AccountJS {
         if (taiKhoan) {
             $(".userShow").hide();
             let html = $(`<h3>Xin chào <a href = "#" class="alert-link">` + taiKhoan.TaiKhoan1 + `</a></h3> <h4 id="logout"><a href = "#" class="alert-link">Đăng xuất</a></h4>`);
+            $('#userName').empty();
             $('#userName').append(html);
             if (taiKhoan.LoaiTk == 0) {
                 $('.buyVip').show();
