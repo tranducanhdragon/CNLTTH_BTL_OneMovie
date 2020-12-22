@@ -88,7 +88,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 				<div class="alert alert-primary" style="padding: 0px 10px 0px 30px;" role="alert" id="userName">
 				</div>
-				<div class="buyVip" style="display: none;"><a style="color: #ff8d1b" href="#"  data-toggle="modal" data-target="#buyVip">Mua VIP</a></div>
+				<!--data-target là thuộc tính bootrap gọi đến nơi có id = buyVip-->
+				<div class="buyVip" style="display: none;"><a style="color: #ff8d1b" href="#" id="MuaVip" data-toggle="modal" data-target="#buyVip">Mua VIP</a></div>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -137,7 +138,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-
 	<div class="modal video-modal fade" id="buyVip" tabindex="-1" role="dialog" aria-labelledby="myModal">
 		<div class="modal-dialog" style="width:80%" role="document">
 
@@ -147,56 +147,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="block-heading">
 						<h2>Chọn gói xem phim của bạn</h2>
 					</div>
-					<div class="row justify-content-md-center">
-						<div class="col-md-5 col-lg-4">
-							<div class="item">
-								<div class="heading">
-									<h3>BASIC</h3>
-								</div>
-								<p>Giảm 0% giá khi mua</p>
-								<div class="features">
-									<h4><span class="feature">Xem Full phim</span> : <span class="value">Yes</span></h4>
-									<h4><span class="feature">Thời hạn</span> : <span class="value">30 Days</span></h4>
-								</div>
-								<div class="price">
-									<h4>50.000 VNĐ</h4>
-								</div>
-								<button class="btn btn-block btn-outline-primary" type="submit">Mua</button>
-							</div>
-						</div>
-						<div class="col-md-5 col-lg-4">
-							<div class="item">
-								<div class="ribbon">Khuyến khích</div>
-								<div class="heading">
-									<h3>PRO</h3>
-								</div>
-								<p>Giảm 20% giá khi mua</p>
-								<div class="features">
-									<h4><span class="feature">Xem Full phim</span> : <span class="value">Yes</span></h4>
-									<h4><span class="feature">Thời hạn</span> : <span class="value">60 Days</span></h4>
-								</div>
-								<div class="price">
-									<h4>80.000 VNĐ</h4>
-								</div>
-								<button class="btn btn-block btn-primary" type="submit">Mua</button>
-							</div>
-						</div>
-						<div class="col-md-5 col-lg-4">
-							<div class="item">
-								<div class="heading">
-									<h3>PREMIUM</h3>
-								</div>
-								<p>Giảm 40% giá khi mua</p>
-								<div class="features">
-									<h4><span class="feature">Xem Full phim</span> : <span class="value">Yes</span></h4>
-									<h4><span class="feature">Thời hạn</span> : <span class="value">120 Days</span></h4>
-								</div>
-								<div class="price">
-									<h4>160.000 VNĐ</h4>
-								</div>
-								<button class="btn btn-block btn-outline-primary" type="submit">Mua</button>
-							</div>
-						</div>
+					<div class="row justify-content-md-center" id="GoiVip">
+						<!--GoiVip.js-->
+						
 					</div>
 				</div>
 			</section>
@@ -848,6 +801,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="../Javascript/common.js"></script>
 	<script src="../Javascript/Account.js"></script>
 	<script src="../Javascript/Movie.js"></script>
-
+	<script src="../Javascript/GoiVip.js"></script>
 </body>
 </html>
