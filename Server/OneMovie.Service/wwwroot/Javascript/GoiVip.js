@@ -24,7 +24,7 @@ class GoiVipJS{
 						<div class="price" name="GiaTien">
 							<h4>`+ GiaTien + ` VNĐ</h4>
 						</div>
-						<button id="btnMuaVip`+ Idgoi +`" class="btn btn-block btn-primary" onclick="MuaVip(`+Idgoi+`)">Mua</button>
+						<button class="btn btn-block btn-primary" onclick="MuaVip(`+Idgoi+`)">Mua</button>
 					</div>
 				</div>`);
 	}
