@@ -28,6 +28,18 @@ namespace OneMovie.Service.Controllers
             return await _context.MuaVips.ToListAsync();
         }
 
+        [Route("/api/GetInfoMuaVip")]
+        public List<InfoMuaVip> GetInfoMuaVip()
+        {
+            List<InfoMuaVip> infoMuaVips = new List<InfoMuaVip>();
+            var query = from MuaVip in _context.MuaVips join GoiVip in _context.GoiVips on MuaVip.Idgoi equals GoiVip.Idgoi select new { MuaVip,GoiVip } ;
+            foreach(var item in query)
+            {
+                infoMuaVips.Add(new InfoMuaVip(item.MuaVip.TaiKhoan,item.MuaVip.Idgoi,item.MuaVip.NgayMua,item.GoiVip.TenGoi,item.GoiVip.ThoiGian,item.GoiVip.GiaTien));
+            }
+            return infoMuaVips;
+        }
+
         // GET: api/MuaVips/5
         [HttpGet("{id}")]
         public async Task<ActionResult<MuaVip>> GetMuaVip(string id)
