@@ -90,9 +90,13 @@ namespace OneMovie.Service.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<MuaVip>> PostMuaVip(MuaVip muaVip)
+        public async Task<ServiceRespone> PostMuaVip(MuaVip muaVip)
         {
+            ServiceRespone res = new ServiceRespone();
+            muaVip.NgayMua = DateTime.Now;
             _context.MuaVips.Add(muaVip);
+            res.Success = true;
+            res.Message = "Đã Đăng Ký Gói!";
             try
             {
                 await _context.SaveChangesAsync();
@@ -101,15 +105,17 @@ namespace OneMovie.Service.Controllers
             {
                 if (MuaVipExists(muaVip.TaiKhoan))
                 {
-                    return Conflict();
+                    res.Message = "Tài khoản nạp thêm hạn";
                 }
                 else
                 {
+                    res.Message = "Có lỗi!";
+                    res.Success = false;
                     throw;
                 }
             }
 
-            return CreatedAtAction("GetMuaVip", new { id = muaVip.TaiKhoan }, muaVip);
+            return res;
         }
 
         // DELETE: api/MuaVips/5

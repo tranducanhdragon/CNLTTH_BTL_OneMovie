@@ -82,12 +82,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="submit" value="Tìm">
 				</form>
 			</div>
-			<div class="w3l_sign_in_register">
+			<div class="w3l_sign_in_register" style="display:flex">
 				<ul>
 					<li class="userShow"><a href="#" data-toggle="modal" data-target="#myModal">Đăng nhập</a></li>
 				</ul>
-				<div class="alert alert-primary" style="padding:0px 10px 0px 30px" role="alert" id="userName">
+				<div class="alert alert-primary" style="padding: 0px 10px 0px 30px;" role="alert" id="userName">
 				</div>
+				<!--data-target là thuộc tính bootrap gọi đến nơi có id = buyVip-->
+				<div class="buyVip" style="display: none;"><a style="color: #ff8d1b" href="#" id="MuaVip" data-toggle="modal" data-target="#buyVip">Mua VIP</a></div>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -119,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="form SignUp">
 									<div id="alert-res" class="alert alert-success" role="alert" style="display:none">
-										
+
 									</div>
 									<h3>Tạo tài khoản mới</h3>
 									<input type="text" fieldname="TaiKhoan1" placeholder="Tên đăng nhập" required="">
@@ -136,7 +138,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	
+	<div class="modal video-modal fade" id="buyVip" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" style="width:80%" role="document">
+
+			<section class="pricing-table" style="padding-bottom:50px">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<div class="container">
+					<div class="block-heading">
+						<h2>Chọn gói xem phim của bạn</h2>
+					</div>
+					<div class="row justify-content-md-center" id="GoiVip">
+						<!--GoiVip.js-->
+						
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
 	<script>
 		$('.toggle').click(function () {
 			// Switches the Icon
@@ -775,7 +794,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //here ends scrolling icon -->
-
 	<!--Custom Script-->
 	<script src="/Assets/js/js_object/TheLoai.js"></script>
 	<script src="../Assets/js/js_object/QuocGia.js"></script>
@@ -783,6 +801,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="../Javascript/common.js"></script>
 	<script src="../Javascript/Account.js"></script>
 	<script src="../Javascript/Movie.js"></script>
-
+	<script src="../Javascript/GoiVip.js"></script>
+	<script src="../Javascript/BinhLuan.js"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@ class AccountJS {
     initEvents() {
         $("#btnDangKy").click(this.btnDangKyOnClick.bind(this));
         $("#btnDangNhap").click(this.btnDangNhapOnClick.bind(this));
+        $(".w3l_sign_in_register").on('click','#logout',this.btnLogoutOnClick.bind(this));
     }
     
     /**
@@ -54,47 +55,50 @@ class AccountJS {
      * */
     btnDangNhapOnClick() {
         let obj = {};
-        debugger;
         let fields = $(".form.SignIn input");
         $.each(fields, function (index, field) {
             var fieldName = $(field).attr('fieldname');
             obj[fieldName] = $(field).val();
         })
-        try {
-            $.ajax({
-                url: '/api/TaiKhoans/' + obj.TaiKhoan1 + '/' + obj.MatKhau,
-                method: "GET",
-                contentType: "application/json",
-                dataType: "json",
-                async: false
-            }).done((res) => {
-                if (res.Success) {
-                    localStorage.setItem('TaiKhoan', JSON.stringify(obj));
-                    this.afterLogin();
-                    $('#myModal').modal('hide');
-                } else {
-                    $('#alert-err').html(res.Message);
-                    $('#alert-err').show();
-                }
-            }).fail((err) => {
-            })
-        } catch{
-            console.log("Có lỗi");
-        }
-        
+
+        //Dùng Promise
+        let promise = BaseAPI.GetByID('/api/TaiKhoans/' + obj.TaiKhoan1, obj.MatKhau);
+        promise.then((res) => {
+            if (res.Success) {
+                localStorage.setItem('TaiKhoan', JSON.stringify(res.Data));
+                this.afterLogin();
+                $('#myModal').modal('hide');
+            }
+            else {
+                $('#alert-err').html(res.Message);
+                $('#alert-err').show();
+            }
+        })
     }
 
     afterLogin() {
         let taiKhoan = JSON.parse(localStorage.getItem('TaiKhoan'));
         if (taiKhoan) {
             $(".userShow").hide();
-            let html = $(`<h3>Xin chào <a href = "#" class="alert-link">` + taiKhoan.TaiKhoan1 + `</a>.</h3>`);
+            let html = $(`<h3>Xin chào <a href = "#" class="alert-link">` + taiKhoan.TaiKhoan1 + `</a></h3> <h4 id="logout"><a href = "#" class="alert-link">Đăng xuất</a></h4>`);
+            $('#userName').empty();
             $('#userName').append(html);
+            if (taiKhoan.LoaiTk == 0) {
+                $('.buyVip').show();
+            } else {
+                $('.buyVip').hide();
+            }
             $('#userName').show();
         } else {
             $(".userShow").show();
             $('#userName').hide();
+            $('.buyVip').hide();
         }
         
+    }
+    btnLogoutOnClick() {
+        localStorage.removeItem('TaiKhoan');
+        console.log(localStorage);
+        this.afterLogin();
     }
 }
