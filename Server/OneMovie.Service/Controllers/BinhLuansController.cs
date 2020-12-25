@@ -29,16 +29,22 @@ namespace OneMovie.Service.Controllers
 
         // GET: api/BinhLuans/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BinhLuan>> GetBinhLuan(string id)
+        public async Task<ServiceRespone> GetBinhLuan(string id)
         {
-            var binhLuan = await _context.BinhLuans.FindAsync(id);
+            ServiceRespone res = new ServiceRespone();
+            var binhluan = await _context.BinhLuans.Where(x => x.MaPhim.Equals(id)).ToListAsync();
+            res.Data = binhluan;
+            res.Message = "Thành Công";
+            res.Success = true;
 
-            if (binhLuan == null)
+            if (binhluan == null)
             {
-                return NotFound();
+                res.Message = "Có Lỗi";
+                res.Success = false;
+                return res;
             }
 
-            return binhLuan;
+            return res;
         }
 
         // PUT: api/BinhLuans/5

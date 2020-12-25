@@ -4,11 +4,13 @@
 
 class BinhLuanJS {
     constructor() {
-        this.initEvents();
-        this.HienThiBinhLuan();
+        this.initEvents();        
     };
 
     initEvents() {
+        let url = window.location.href;
+        let MaPhim = url.substring(url.lastIndexOf('=') + 1);
+        this.HienThiBinhLuan(MaPhim);
         $("#btnBinhLuan").click(this.GuiBinhLuan.bind(this));
     };
 
@@ -49,20 +51,21 @@ class BinhLuanJS {
         let bl_promise = BaseAPI.Post('/api/BinhLuans', obj);
         bl_promise.then((res) => {
             if (res) {
-                $('.media-grids').show();
+                window.location.href = url;
             }
         })
 
     }
 
-    HienThiBinhLuan() {
-        let bl = BaseAPI.Get('/api/BinhLuans');
+    HienThiBinhLuan(MaPhim) {
+        let bl = BaseAPI.GetByID('/api/BinhLuans', MaPhim);
         bl.then((res) => {
             if (res) {
                 $('.media-grids').empty();
-                $.each(res, (index, item) => {
+                $.each(res.Data, (index, item) => {
                     $('.media-grids').append(this.loadBinhLuan(item.TaiKhoan, item.NoiDung))
                 })
+                $('.media-grids').show();
                 
             }
         })
