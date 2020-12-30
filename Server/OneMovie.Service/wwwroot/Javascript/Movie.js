@@ -8,15 +8,15 @@ class MovieJS {
     }
 
 	
-	htmlAppend(TenPhim,NamXb) {
+	htmlAppend(Idphim,TenPhim,NamXb) {
 		return $(`<div class="col-md-2 w3l-movie-gride-agile">
-					<a href="single.html" class="hvr-shutter-out-horizontal">
+					<a href="single.html?Idphim=`+ Idphim +`" class="hvr-shutter-out-horizontal">
 						<img src="/Assets/MyImages/harry-potter-7-1.jpg" title="album-name" class="img-responsive" alt=" " />
 						<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
 					</a>
 					<div class="mid-1 agileits_w3layouts_mid_1_home">
 						<div class="w3l-movie-text">
-							<h6><a href="single.html">`+ TenPhim + `</a></h6>
+							<h6><a href="single.html?Idphim=`+ Idphim +`">` + TenPhim + `</a></h6>
 						</div>
 						<div class="mid-2 agile_mid_2_home">
 							<p>`+ commonJS.getYear(NamXb) + `</p>
@@ -43,14 +43,14 @@ class MovieJS {
         let data; 
         let promise = BaseAPI.Get('/api/PhanPhims');
         promise.then((res) => {
-            if (res) {
+			if (res) {
 				data = res;
 				//#region Phim nổi bật
 				//#region danh sách phim đặc sắc
 				$('#home .w3_agile_featured_movies').empty(); //Xoa data cũ
 
-				$.each(data, (index,item) => { 
-					$('#home .w3_agile_featured_movies').append(this.htmlAppend(item.TenPhim, item.NamXb));
+				$.each(data, (index, item) => {
+					$('#home .w3_agile_featured_movies').append(this.htmlAppend(item.MaPhim, item.TenPhim, item.NamXb));
 				})
 				//#endregion
 				//#region danh sách phim top viewd (Lấy vài phim nhiều view nhất)

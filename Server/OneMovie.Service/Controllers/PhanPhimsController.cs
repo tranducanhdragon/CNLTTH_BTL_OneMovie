@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,8 @@ namespace OneMovie.Service.Controllers
         {
             _context = context;
         }
+
+
 
         // GET: api/PhanPhims
         [HttpGet]
@@ -88,27 +92,52 @@ namespace OneMovie.Service.Controllers
         // POST: api/PhanPhims
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Route("PosterFilm")]
         [HttpPost]
-        public async Task<ActionResult<PhanPhim>> PostPhanPhim(PhanPhim phanPhim)
+        public ServiceRespone PosterFilm(IFormFile files,[FromServices] IHostingEnvironment oHostingEnvironment)
         {
-            _context.PhanPhims.Add(phanPhim);
-            try
+            ServiceRespone res = new ServiceRespone();
+            if (files.Length > 0)
             {
-                await _context.SaveChangesAsync();
+                string url = $"{oHostingEnvironment.WebRootPath}\\Upload-img\\{files.FileName}";
+                using (FileStream fileStream = System.IO.File.Create(url))
+                {
+                    files.CopyTo(fileStream);
+                    fileStream.Flush();
+                }
+                res.Success = true;
+                res.Data = files;
             }
-            catch (DbUpdateException)
+            else
             {
-                if (PhanPhimExists(phanPhim.MaPhim))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                res.Success = false;
             }
+            return res;
+        }
 
-            return CreatedAtAction("GetPhanPhim", new { id = phanPhim.MaPhim }, phanPhim);
+        [Route("VideoFilm")]
+        [HttpPost]
+        [RequestFormLimits(MultipartBodyLengthLimit = 4097152000)]
+        [RequestSizeLimit(4097152000)]
+        public ServiceRespone VideoFilm(IFormFile files, [FromServices] IHostingEnvironment oHostingEnvironment)
+        {
+            ServiceRespone res = new ServiceRespone();
+            if (files.Length > 0)
+            {
+                string url = $"{oHostingEnvironment.WebRootPath}\\Upload-vid\\{files.FileName}";
+                using (FileStream fileStream = System.IO.File.Create(url))
+                {
+                    files.CopyTo(fileStream);
+                    fileStream.Flush();
+                }
+                res.Success = true;
+                res.Data = files;
+            }
+            else
+            {
+                res.Success = false;
+            }
+            return res;
         }
 
         // DELETE: api/PhanPhims/5

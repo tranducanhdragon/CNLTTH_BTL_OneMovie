@@ -28,6 +28,18 @@ namespace OneMovie.Service.Controllers
             return await _context.MuaVips.ToListAsync();
         }
 
+        [Route("/api/GetInfoMuaVip")]
+        public List<InfoMuaVip> GetInfoMuaVip()
+        {
+            List<InfoMuaVip> infoMuaVips = new List<InfoMuaVip>();
+            var query = from MuaVip in _context.MuaVips join GoiVip in _context.GoiVips on MuaVip.Idgoi equals GoiVip.Idgoi select new { MuaVip,GoiVip } ;
+            foreach(var item in query)
+            {
+                infoMuaVips.Add(new InfoMuaVip(item.MuaVip.TaiKhoan,item.MuaVip.Idgoi,item.MuaVip.NgayMua,item.GoiVip.TenGoi,item.GoiVip.ThoiGian,item.GoiVip.GiaTien));
+            }
+            return infoMuaVips;
+        }
+
         // GET: api/MuaVips/5
         [HttpGet("{id}")]
         public async Task<ActionResult<MuaVip>> GetMuaVip(string id)
@@ -78,9 +90,13 @@ namespace OneMovie.Service.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<MuaVip>> PostMuaVip(MuaVip muaVip)
+        public async Task<ServiceRespone> PostMuaVip(MuaVip muaVip)
         {
+            ServiceRespone res = new ServiceRespone();
+            muaVip.NgayMua = DateTime.Now;
             _context.MuaVips.Add(muaVip);
+            res.Success = true;
+            res.Message = "Đã Đăng Ký Gói!";
             try
             {
                 await _context.SaveChangesAsync();
@@ -89,15 +105,17 @@ namespace OneMovie.Service.Controllers
             {
                 if (MuaVipExists(muaVip.TaiKhoan))
                 {
-                    return Conflict();
+                    res.Message = "Tài khoản nạp thêm hạn";
                 }
                 else
                 {
+                    res.Message = "Có lỗi!";
+                    res.Success = false;
                     throw;
                 }
             }
 
-            return CreatedAtAction("GetMuaVip", new { id = muaVip.TaiKhoan }, muaVip);
+            return res;
         }
 
         // DELETE: api/MuaVips/5

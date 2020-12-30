@@ -29,16 +29,22 @@ namespace OneMovie.Service.Controllers
 
         // GET: api/BinhLuans/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BinhLuan>> GetBinhLuan(string id)
+        public async Task<ServiceRespone> GetBinhLuan(string id)
         {
-            var binhLuan = await _context.BinhLuans.FindAsync(id);
+            ServiceRespone res = new ServiceRespone();
+            var binhluan = await _context.BinhLuans.Where(x => x.MaPhim.Equals(id)).ToListAsync();
+            res.Data = binhluan;
+            res.Message = "Thành Công";
+            res.Success = true;
 
-            if (binhLuan == null)
+            if (binhluan == null)
             {
-                return NotFound();
+                res.Message = "Có Lỗi";
+                res.Success = false;
+                return res;
             }
 
-            return binhLuan;
+            return res;
         }
 
         // PUT: api/BinhLuans/5
@@ -77,9 +83,13 @@ namespace OneMovie.Service.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<BinhLuan>> PostBinhLuan(BinhLuan binhLuan)
+        public async Task<ServiceRespone> PostBinhLuan(BinhLuan binhLuan)
         {
+            ServiceRespone res = new ServiceRespone();
+            binhLuan.ThoiGian = DateTime.Now;
             _context.BinhLuans.Add(binhLuan);
+            res.Success = true;
+            res.Message = "Thành Công!";
             try
             {
                 await _context.SaveChangesAsync();
@@ -88,15 +98,17 @@ namespace OneMovie.Service.Controllers
             {
                 if (BinhLuanExists(binhLuan.TaiKhoan))
                 {
-                    return Conflict();
+                    res.Message = "Bình luận tiếp";
                 }
                 else
                 {
+                    res.Message = "Có lỗi!";
+                    res.Success = false;
                     throw;
                 }
             }
 
-            return CreatedAtAction("GetBinhLuan", new { id = binhLuan.TaiKhoan }, binhLuan);
+            return res;
         }
 
         // DELETE: api/BinhLuans/5

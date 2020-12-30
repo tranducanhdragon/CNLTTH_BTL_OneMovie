@@ -24,10 +24,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="/Assets/css/contactstyle.css" type="text/css" media="all" />
 <link rel="stylesheet" href="/Assets/css/faqstyle.css" type="text/css" media="all" />
 <!-- news-css -->
-<link rel="stylesheet" href="news-/Assets/css/news.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/Assets/news-css/news.css" type="text/css" media="all" />
 <!-- //news-css -->
 <!-- list-css -->
-<link rel="stylesheet" href="list-/Assets/css/list.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/Assets/list-css/list.css" type="text/css" media="all" />
 <!-- //list-css -->
 <!-- font-awesome icons -->
 <link rel="stylesheet" href="/Assets/css/font-awesome.min.css" />
@@ -275,13 +275,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div class="g-plusone" data-size="medium"></div>
 
 											<!-- Place this tag after the last +1 button tag. -->
-											<script type="text/javascript">
+											<!--<script type="text/javascript">
 												(function () {
 													var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
 													po.src = 'https://apis.google.com/js/platform.js';
 													var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 												})();
-											</script>
+											</script>-->
 										</li>
 									</ul>
 								</div>
@@ -294,52 +294,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a href="#">Comments</a>
 								<div class="agile-info-wthree-box">
 									<form>
-										<input type="text" placeholder="Name" required="">
-										<input type="text" placeholder="Email" required="">
-										<input type="text" placeholder="Phone" required="">
-										<textarea placeholder="Message" required=""></textarea>
-										<input type="submit" value="SEND">
+										<input type="text" fieldname="Name" placeholder="Name" required="">
+										<input type="text" fieldname="Email" placeholder="Email" required="">
+										<input type="text" fieldname="Phone" placeholder="Phone" required="">
+										<textarea fieldname="Message" placeholder="Message" required=""></textarea>
+										<input id="btnBinhLuan" type="submit" aria-label="Close" value="Gửi" >
 										<div class="clearfix"> </div>
 									</form>
 								</div>
 							</div>
 							<div class="media-grids">
-								<div class="media">
-									<h5>TOM BROWN</h5>
-									<div class="media-left">
-										<a href="#">
-											<img src="/Assets/images/user.jpg" title="One movies" alt=" " />
-										</a>
-									</div>
-									<div class="media-body">
-										<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-										<span>View all posts by :<a href="#"> Admin </a></span>
-									</div>
-								</div>
-								<div class="media">
-									<h5>MARK JOHNSON</h5>
-									<div class="media-left">
-										<a href="#">
-											<img src="/Assets/images/user.jpg" title="One movies" alt=" " />
-										</a>
-									</div>
-									<div class="media-body">
-										<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-										<span>View all posts by :<a href="#"> Admin </a></span>
-									</div>
-								</div>
-								<div class="media">
-									<h5>STEVEN SMITH</h5>
-									<div class="media-left">
-										<a href="#">
-											<img src="/Assets/images/user.jpg" title="One movies" alt=" " />
-										</a>
-									</div>
-									<div class="media-body">
-										<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-										<span>View all posts by :<a href="#"> Admin </a></span>
-									</div>
-								</div>
+								<!-- BinhLuan.js -->
 
 							</div>
 						</div>
@@ -802,9 +767,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
 		});
-	</script>
+	</script>  
 	<!-- //here ends scrolling icon -->
-
 	<!--Custom Script-->
 	<script src="/Assets/js/js_object/TheLoai.js"></script>
 	<script src="../Assets/js/js_object/QuocGia.js"></script>
@@ -812,6 +776,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="../Javascript/common.js"></script>
 	<script src="../Javascript/Account.js"></script>
 	<script src="../Javascript/Movie.js"></script>
-
+	<script src="../Javascript/GoiVip.js"></script>
+	<script src="../Javascript/BinhLuan.js"></script>
 </body>
 </html>
