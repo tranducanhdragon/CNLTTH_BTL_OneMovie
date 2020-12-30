@@ -14,5 +14,7 @@ namespace OneMovie.Service.Models
         public object Data { get; set; }
 
         public int ErrorCode { get; set; }
+        public int Type { get; set; }
+
     }
 }
