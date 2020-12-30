@@ -141,6 +141,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Assets\MyImages\" />
+    <Folder Include="wwwroot\Upload-vid\" />
+    <Folder Include="wwwroot\Upload-img\" />
   </ItemGroup>
 
 

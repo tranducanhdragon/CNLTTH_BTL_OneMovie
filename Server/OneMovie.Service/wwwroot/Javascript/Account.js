@@ -60,6 +60,7 @@ class AccountJS {
             var fieldName = $(field).attr('fieldname');
             obj[fieldName] = $(field).val();
         })
+
         let promise = BaseAPI.GetByID('/api/TaiKhoans/' + obj.TaiKhoan1, obj.MatKhau);
         promise.then((res) => {
             if (res.Success) {

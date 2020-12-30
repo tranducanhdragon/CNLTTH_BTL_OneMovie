@@ -11068,7 +11068,8 @@ body {
     margin-left: 2px;
     background: #fff;
     border-color: #007bff;
-    color: #007bff;
+    color: #fff;
+    background: #007bff;
 }
 
 #btn-save-movie {
