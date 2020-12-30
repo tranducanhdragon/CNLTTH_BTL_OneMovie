@@ -122,6 +122,7 @@ namespace OneMovie.Service.Controllers
         public ServiceRespone VideoFilm(IFormFile files, [FromServices] IHostingEnvironment oHostingEnvironment)
         {
             ServiceRespone res = new ServiceRespone();
+            //hiện tại đang lưu local tại forder Upload-vid
             if (files.Length > 0)
             {
                 string url = $"{oHostingEnvironment.WebRootPath}\\Upload-vid\\{files.FileName}";

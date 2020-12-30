@@ -23,6 +23,7 @@
 
 	//Upload video
 	$("#video_film").on("change", (e) => {
+		console.log(1);
 		let formData = new FormData();
 		formData.append("files", e.target.files[0]);
 		$.ajax({
@@ -42,7 +43,7 @@
 	//Upload ảnh
 	$("#upload_file").on("change", function (e) {
 		$("#uploaded_view").find("img").remove();
-		var ext = btnUpload.val().split('.').pop().toLowerCase();
+		var ext = $("#upload_file").val().split('.').pop().toLowerCase();
 		if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
 			$(".error_msg").text("Not an Image...");
 		} else {
