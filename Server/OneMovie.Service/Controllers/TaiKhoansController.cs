@@ -42,8 +42,19 @@ namespace OneMovie.Service.Controllers
                 res.Success = false;
                 return res;
             }
-            res.Success = true;
-            res.Data = taiKhoanDB;
+            if(taiKhoanDB.LoaiTk == 1)
+            {
+                res.Success = true;
+                res.Type = 1;
+                res.Data = taiKhoanDB;
+            }
+            else
+            {
+
+                res.Success = true;
+                res.Type = 0;
+                res.Data = taiKhoanDB;
+            }
             return res;
         }
 
