@@ -94,6 +94,7 @@ namespace OneMovie.Service.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [Route("PosterFilm")]
         [HttpPost]
+        [Obsolete]
         public ServiceRespone PosterFilm(IFormFile files,[FromServices] IHostingEnvironment oHostingEnvironment)
         {
             ServiceRespone res = new ServiceRespone();
@@ -119,6 +120,7 @@ namespace OneMovie.Service.Controllers
         [HttpPost]
         [RequestFormLimits(MultipartBodyLengthLimit = 4097152000)]
         [RequestSizeLimit(4097152000)]
+        [Obsolete]
         public ServiceRespone VideoFilm(IFormFile files, [FromServices] IHostingEnvironment oHostingEnvironment)
         {
             ServiceRespone res = new ServiceRespone();
